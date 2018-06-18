@@ -105,7 +105,7 @@ const countAliveNeighbors = (map, x, y) => {
   return count;
 }
 
-const outOfBounds = (map, adjX, adjY) => {
+export const outOfBounds = (map, adjX, adjY) => {
   return adjX < 0 || adjX >= map.length || adjY < 0 || adjY >= map[0].length
 }
 
@@ -160,7 +160,7 @@ export const generateMap = () => {
 }
 
 export const drawMap = (map) => {
-  const rootEl = document.getElementById("canvas");
+  const rootEl = document.getElementById("canvas-div");
   const grid = document.createDocumentFragment();
 
   for ( let i = 0; i < map.length; i++ ) {

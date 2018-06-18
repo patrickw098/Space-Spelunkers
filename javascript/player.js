@@ -1,15 +1,23 @@
 import Character from './characters.js';
 
 const DEFAULTS = {
-  RADIUS: 16
+  RADIUS: 50,
+  COLOR: "green"
 }
 
 class Player extends Character {
   constructor(options = {}) {
-    debugger;
     options.radius = DEFAULTS.RADIUS;
+    options.color = DEFAULTS.COLOR;
 
     super(options);
+  }
+
+  draw(ctx) {
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.fillRect(312, 312, 75, 75);
+    ctx.fill();
   }
 
   collidedWith(otherObject) {

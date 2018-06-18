@@ -1,4 +1,4 @@
-import { generateMap, drawMap } from './caverns.js'
+import { generateMap, drawMap, turmitesNTimes } from './caverns.js'
 import Game from './game.js';
 import GameView from './game_view.js';
 
@@ -6,11 +6,16 @@ import GameView from './game_view.js';
 document.addEventListener('DOMContentLoaded', () => {
   const canvasEl = document.getElementById("canvas");
   console.log(canvasEl);
-  canvasEl.width = 80;
-  canvasEl.height = 80;
+  canvasEl.width = Game.DIM_X;
+  canvasEl.height = Game.DIM_Y;
 
   const ctx = canvasEl.getContext("2d");
   const game = new Game();
-  new GameView(game, ctx).start();
+  window.game = game;
+  // new GameView(game, ctx).start();
+
+  game.draw(ctx);
+
+  // drawMap(game.map.grid);
 
 })

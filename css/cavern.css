@@ -1,6 +1,6 @@
 body {
-  height: 1000px;
-  width: 1000px;
+  /* height: 1000px;
+  width: 1000px; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,29 +14,37 @@ div {
 }
 
 .row {
-  height: 16px;
-  width: 800px;
+  height: 100px;
+  width: 5000px;
   display: flex;
   flex-direction: row;
 }
 
-/* #canvas {
-  width: 800px;
-  height: 800px;
+#canvas {
+  border: 20px solid black;
+}
+
+#canvas-div {
+  width: 5000px;
+  height: 5000px;
   display: flex;
   flex-direction: column;
   margin: 200px auto;
-  border: 16px solid black;
+  border: 100px solid black;
+}
+
+/* #canvas {
+  position: relative;
 } */
 
 .empty {
   background-color: white;
-  height: 16px;
-  width: 16px;
+  height: 100px;
+  width: 100px;
 }
 
 .wall {
   background-color: black;
-  height: 16px;
-  width: 16px;
+  height: 100px;
+  width: 100px;
 }
