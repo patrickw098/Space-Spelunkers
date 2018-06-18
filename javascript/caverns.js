@@ -1,7 +1,7 @@
 
 
 const createmap = (width, height) => {
-  const chanceToStartAlive = 0.40;
+  const chanceToStartAlive = 0.38;
   const map = [];
 
     for( let x = 0; x < width; x++ ){
@@ -186,9 +186,71 @@ const drawMap = (map) => {
   rootEl.append(grid);
 }
 
+const turmitesNTimes = (times) => {
+  let grid = squareGrid(150);
+  let x = 75;
+  let y = 75;
+  let state = 0;
+  let dirX = - 1;
+  let dirY = 0;
+
+  for ( let i = 0; i < times; i++ ) {
+    [x, y, grid, dirX, dirY, state] = turmites(...[x, y, grid, dirX, dirY, state]);
+  }
+
+  return grid;
+}
+
+const squareGrid = (n) => {
+  let grid = new Array(n);
+
+  for ( let i = 0; i < grid.length; i++ ) {
+    grid[i] = new Array(n);
+    for (let j = 0; j < grid[i].length; j++ ) {
+      grid[i][j] = true;
+    }
+  }
+
+  return grid;
+}
+
+const turmites = (x, y, grid, dirX, dirY, state) => {
+
+  if ( outOfBounds(grid, x, y) ) {
+    return "error"
+  } else if ( grid[x][y] === true && state === 0 ){
+    grid[x][y] = false;
+    [dirX, dirY] = ninetyDegrees(dirX, dirY);
+    state = 0;
+    return [x + dirX, y + dirY, grid, dirX, dirY, state]
+  } else if ( grid[x][y] === true && state === 1 ) {
+    grid[x][y] = true;
+    state = 0;
+    return [x + dirX, y + dirY, grid, dirX, dirY, state]
+  } else if ( grid[x][y] === false && state === 0 ) {
+    grid[x][y] = false;
+    [dirX, dirY] = ninetyDegrees(dirX, dirY);
+    state = 1;
+    return [x + dirX, y + dirY, grid, dirX, dirY, state]
+  } else {
+    grid[x][y] = true;
+    state = 1;
+    return [x + dirX, y + dirY, grid, dirX, dirY, state]
+  }
+}
+
+const ninetyDegrees = (dirX, dirY) => {
+  if ( dirX === 0 ) {
+    return [dirY, 0]
+  } else {
+    return [0, -dirX ]
+  }
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  const cavern = generateMap();
+  let cavern = generateMap();
+
 
   drawMap(cavern);
 })
