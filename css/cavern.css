@@ -1,0 +1,42 @@
+body {
+  height: 1000px;
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 0;
+}
+
+div {
+  height: auto;
+  width: auto;
+  margin: 0 0;
+}
+
+.row {
+  height: 16px;
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+}
+
+#canvas {
+  width: 800px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  margin: 200px auto;
+  border: 16px solid black;
+}
+
+.empty {
+  background-color: white;
+  height: 16px;
+  width: 16px;
+}
+
+.wall {
+  background-color: black;
+  height: 16px;
+  width: 16px;
+}

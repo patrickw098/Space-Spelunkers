@@ -18,7 +18,8 @@ Players will be able to select different settings for the rules of randomly gene
 
 Additionally, there will be a zen mode in which players can simply view the randomly generated caverns in their entirety based on whatever configurations they have selected.  In zen mode, players will not be able to use a character to interact with the procedurally generated cavern.
 
-## Wireframes: TBD
+## Wireframes
+![SpaceSpelunkers](https://s15.postimg.cc/ih8oro00r/Space_Spelunker.png)
 
 ## Architectures and Technologies
 The project will utilize the following technologies:
