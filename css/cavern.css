@@ -20,14 +20,14 @@ div {
   flex-direction: row;
 }
 
-#canvas {
+/* #canvas {
   width: 800px;
   height: 800px;
   display: flex;
   flex-direction: column;
   margin: 200px auto;
   border: 16px solid black;
-}
+} */
 
 .empty {
   background-color: white;

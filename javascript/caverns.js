@@ -1,6 +1,6 @@
 
 
-const createmap = (width, height) => {
+const createMap = (width, height) => {
   const chanceToStartAlive = 0.38;
   const map = [];
 
@@ -57,7 +57,7 @@ const doSimulationStep = (oldMap) => {
 }
 
 const doStepNumTimes = (num) => {
-  let map = createmap(50,50);
+  let map = createMap(50,50);
 
   for ( let i = 0; i < num; i++ ) {
     map = doSimulationStep(map);
@@ -139,7 +139,7 @@ const count = map => {
 }
 
 
-const generateMap = () => {
+export const generateMap = () => {
   let map = doStepNumTimes(10);
   let maxCounter = 0;
   let startSpace = [];
@@ -156,10 +156,10 @@ const generateMap = () => {
     }
   }
 
-  return maxCounter > 1100 && maxCounter < 1700 ? map : generateMap()
+  return maxCounter > 1100 && maxCounter < 1700 ? [map, startSpace] : generateMap()
 }
 
-const drawMap = (map) => {
+export const drawMap = (map) => {
   const rootEl = document.getElementById("canvas");
   const grid = document.createDocumentFragment();
 
@@ -186,7 +186,7 @@ const drawMap = (map) => {
   rootEl.append(grid);
 }
 
-const turmitesNTimes = (times) => {
+export const turmitesNTimes = (times) => {
   let grid = squareGrid(150);
   let x = 75;
   let y = 75;
@@ -220,7 +220,7 @@ const turmites = (x, y, grid, dirX, dirY, state) => {
     return "error"
   } else if ( grid[x][y] === true && state === 0 ){
     grid[x][y] = false;
-    [dirX, dirY] = ninetyDegrees(dirX, dirY);
+    [dirX, dirY] = ninetyDegreesRight(dirX, dirY);
     state = 0;
     return [x + dirX, y + dirY, grid, dirX, dirY, state]
   } else if ( grid[x][y] === true && state === 1 ) {
@@ -229,7 +229,7 @@ const turmites = (x, y, grid, dirX, dirY, state) => {
     return [x + dirX, y + dirY, grid, dirX, dirY, state]
   } else if ( grid[x][y] === false && state === 0 ) {
     grid[x][y] = false;
-    [dirX, dirY] = ninetyDegrees(dirX, dirY);
+    [dirX, dirY] = ninetyDegreesRight(dirX, dirY);
     state = 1;
     return [x + dirX, y + dirY, grid, dirX, dirY, state]
   } else {
@@ -239,18 +239,10 @@ const turmites = (x, y, grid, dirX, dirY, state) => {
   }
 }
 
-const ninetyDegrees = (dirX, dirY) => {
+const ninetyDegreesRight = (dirX, dirY) => {
   if ( dirX === 0 ) {
     return [dirY, 0]
   } else {
     return [0, -dirX ]
   }
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  let cavern = generateMap();
-
-
-  drawMap(cavern);
-})
