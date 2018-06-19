@@ -14,8 +14,8 @@ div {
 }
 
 .row {
-  height: 100px;
-  width: 5000px;
+  height: 16px;
+  width: 800px;
   display: flex;
   flex-direction: row;
 }
@@ -25,8 +25,8 @@ div {
 }
 
 #canvas-div {
-  width: 5000px;
-  height: 5000px;
+  width: 800px;
+  height: 800px;
   display: flex;
   flex-direction: column;
   margin: 200px auto;
@@ -39,12 +39,12 @@ div {
 
 .empty {
   background-color: white;
-  height: 100px;
-  width: 100px;
+  height: 16px;
+  width: 16px;
 }
 
 .wall {
   background-color: black;
-  height: 100px;
-  width: 100px;
+  height: 16px;
+  width: 16px;
 }

@@ -20,6 +20,19 @@ class Player extends Character {
     ctx.fill();
   }
 
+  move(move) {
+    let [x,y] = this.pos;
+    let [newX, newY] = move;
+
+    if ( this.map.grid[x + newX][y + newY] ) {
+      this.pos = [x + newX, y + newY];
+      console.log(this.pos);
+      return [x + newX, y + newY];
+    } else {
+      console.log("invalid move");
+    }
+  }
+
   collidedWith(otherObject) {
     // if (otherObject instanceof Enemy) {
     //   this.remove();

@@ -80,7 +80,6 @@ const printMap = (map) => {
 
     printedRow = printedRow.join("")
 
-    console.log(printedRow)
   }
 }
 

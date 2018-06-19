@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
   canvasEl.height = Game.DIM_Y;
 
   const ctx = canvasEl.getContext("2d");
-  const game = new Game();
+  const game = new Game(ctx);
   window.game = game;
   // new GameView(game, ctx).start();
 
-  game.draw(ctx);
+  game.start();
 
-  // drawMap(game.map.grid);
+  drawMap(game.map.grid);
 
 })
