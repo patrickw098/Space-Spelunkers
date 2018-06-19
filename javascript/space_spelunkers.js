@@ -5,7 +5,6 @@ import GameView from './game_view.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const canvasEl = document.getElementById("canvas");
-  console.log(canvasEl);
   canvasEl.width = Game.DIM_X;
   canvasEl.height = Game.DIM_Y;
 

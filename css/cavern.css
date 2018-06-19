@@ -2,9 +2,12 @@ body {
   /* height: 1000px;
   width: 1000px; */
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin: 0 0;
+}
+
+header {
+  text-align: center;
 }
 
 div {
@@ -14,10 +17,26 @@ div {
 }
 
 .row {
-  height: 16px;
-  width: 800px;
+  height: 400px;
+  width: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  height: 0;
+  width: 0;
+}
+
+.game-view {
   display: flex;
   flex-direction: row;
+}
+
+.main-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 #canvas {
@@ -25,12 +44,11 @@ div {
 }
 
 #canvas-div {
-  width: 800px;
-  height: 800px;
+  width: 400px;
+  height: 400px;
   display: flex;
-  flex-direction: column;
-  margin: 200px auto;
-  border: 100px solid black;
+  flex-direction: row;
+  border: 8px solid black;
 }
 
 /* #canvas {
@@ -39,12 +57,12 @@ div {
 
 .empty {
   background-color: white;
-  height: 16px;
-  width: 16px;
+  height: 8px;
+  width: 8px;
 }
 
 .wall {
   background-color: black;
-  height: 16px;
-  width: 16px;
+  height: 8px;
+  width: 8px;
 }

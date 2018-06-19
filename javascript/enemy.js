@@ -1,4 +1,5 @@
 import Character from './characters.js';
+import Player from './player.js';
 
 const DEFAULTS = {
   RADIUS: 50,
@@ -9,8 +10,17 @@ class Enemy extends Character {
   constructor(options){
     options.radius = DEFAULTS.RADIUS;
     options.color = DEFAULTS.COLOR;
-    
+
     super(options);
+  }
+
+  collidedWith(otherObject) {
+    const that = this;
+
+    if ( otherObject instanceof Player) {
+      that.game.remove(otherObject);
+      that.game.remove(that);
+    }
   }
 }
 

@@ -14,10 +14,24 @@ class Player extends Character {
   }
 
   draw(ctx) {
-    ctx.beginPath();
-    ctx.fillStyle = this.color;
-    ctx.fillRect(312, 312, 75, 75);
-    ctx.fill();
+    let linkFront = document.getElementById("link-front");
+    let linkBack = document.getElementById("link-back");
+    let linkLeft = document.getElementById("link-left");
+    let linkRight = document.getElementById("link-right");
+    // ctx.beginPath();
+    // ctx.fillStyle = this.color;
+    // ctx.fillRect(312, 312, 75, 75);
+    // ctx.fill();
+    if ( this.game.viewport.toString() === "0,1" ) {
+      ctx.drawImage(linkFront, 312, 312, 75, 75);
+    } else if ( this.game.viewport.toString() === "1,0" ) {
+      ctx.drawImage(linkRight, 312, 312, 75, 75);
+    } else if ( this.game.viewport.toString() === "-1,0" ) {
+      ctx.drawImage(linkLeft, 312, 312, 75, 75);
+    } else {
+      ctx.drawImage(linkBack, 312, 312, 75, 75);
+    }
+
   }
 
   move(move) {
@@ -26,10 +40,7 @@ class Player extends Character {
 
     if ( this.map.grid[x + newX][y + newY] ) {
       this.pos = [x + newX, y + newY];
-      console.log(this.pos);
       return [x + newX, y + newY];
-    } else {
-      console.log("invalid move");
     }
   }
 
