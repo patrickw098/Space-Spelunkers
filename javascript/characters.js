@@ -44,7 +44,7 @@ class Character {
       // ctx.fillRect((this.pos[0] - this.game.player[0].pos[0]) * 100 + 300, (this.pos[1] - this.game.player[0].pos[1]) * 100 + 300, 75, 75);
       // ctx.fill();
       
-      let img = document.getElementById("monster");
+      let img = document.getElementById("rock");
       ctx.drawImage(img, (this.pos[0] - this.game.player[0].pos[0]) * 100 + 300, (this.pos[1] - this.game.player[0].pos[1]) * 100 + 300, 75, 75)
     }    
   }

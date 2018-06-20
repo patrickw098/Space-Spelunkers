@@ -13,7 +13,7 @@ class Enemy extends Character {
 
     super(options);
 
-    window.setInterval( this.getMove.bind(this), 500 )
+    window.setInterval( this.getMove.bind(this), 400 )
   }
 
   collidedWith(otherObject) {
@@ -22,6 +22,24 @@ class Enemy extends Character {
     if ( otherObject instanceof Player) {
       that.game.remove(otherObject);
       that.game.remove(that);
+    }
+  }
+
+  draw(ctx) {
+    // if ( this.pos[0] >= this.game.windowMin[0]-1 && this.pos[0] <= this.game.windowMax[0]+1
+    //   && this.pos[1] <= this.game.windowMax[1]+1 && this.pos[1] >= this.game.windowMin[1]-1 ) {
+    //     this.getMove();
+    // }
+
+    if (this.pos[0] >= this.game.windowMin[0] && this.pos[0] <= this.game.windowMax[0]
+      && this.pos[1] <= this.game.windowMax[1] && this.pos[1] >= this.game.windowMin[1]) {
+      // ctx.beginPath();
+      // ctx.fillStyle = this.color;
+      // ctx.fillRect((this.pos[0] - this.game.player[0].pos[0]) * 100 + 300, (this.pos[1] - this.game.player[0].pos[1]) * 100 + 300, 75, 75);
+      // ctx.fill();
+
+      let img = document.getElementById("monster");
+      ctx.drawImage(img, (this.pos[0] - this.game.player[0].pos[0]) * 100 + 300, (this.pos[1] - this.game.player[0].pos[1]) * 100 + 300, 75, 75)
     }
   }
 }

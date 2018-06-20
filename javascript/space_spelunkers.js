@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
       game = newGame;
       game.start();
       drawMap(game.map.grid);
-      // let startButton = document.getElementById("start-button");
+      let startButton = document.getElementById("start-button");
+      startButton.blur();
       // startButton.classList.add("hidden");
       window.game = game;
     })

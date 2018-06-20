@@ -2,7 +2,7 @@ import Player from './player.js';
 import Enemy from './enemy.js';
 import Map from './map.js';
 import { generateMap, turmitesNTimes, drawMap } from './caverns.js';
-import Weapon from './weapons.js';
+import Rock from './rock.js';
 import FlameThrower from './flame_thrower.js';
 
 class Game {
@@ -15,6 +15,7 @@ class Game {
     this.ctx = ctx;
     this.viewport = [1,0];
     this.weapons = [];
+    this.rocks = [];
     this.enemiesNum = options.enemies;
 
     this.addPlayer();
@@ -25,14 +26,18 @@ class Game {
     const that = this;
     this.bindKeyHandlers();
 
-    this.interval = window.setInterval(that.animate.bind(this), 75);
+    // this.interval = window.setInterval(that.animate.bind(this), 75);
+
+    this.animate();
   }
 
   end() {
-    window.clearInterval(this.interval);
+    // window.clearInterval(this.interval);
   }
 
   animate() {
+    requestAnimationFrame(this.animate.bind(this));
+
     this.draw(this.ctx);
     this.checkCollisions();
   }
@@ -44,6 +49,8 @@ class Game {
       this.enemies.push(object);
     } else if ( object instanceof Array ) {
       this.weapons = this.weapons.concat(object);
+    } else if ( object instanceof Rock ) {
+      this.rocks.push(object);
     }
   }
 
@@ -56,7 +63,7 @@ class Game {
         let move = Game.MOVES[event.key]
         this.viewport = move;
         player[0].move(move);
-      } else if ( event.key === "g" ) {
+      } else if ( event.key === "f" ) {
         this.add(that.calculateFlamethrower())
       }
     })
@@ -102,6 +109,10 @@ class Game {
     for (let i = 0; i < this.enemiesNum; i++) {
       this.add(new Enemy({ game: this, pos: this.map.randomPos(), map: this.map }))
     }
+
+    for (let i = 0; i < 200; i++) {
+      this.add(new Rock({ game: this, pos: this.map.randomPos(), map: this.map }))
+    }
   }
 
   draw() {
@@ -122,7 +133,7 @@ class Game {
   }
 
   allObjects() {
-    return [].concat(this.player, this.weapons, this.enemies)
+    return [].concat(this.rocks, this.player, this.weapons, this.enemies)
   }
 
   checkCollisions() {
