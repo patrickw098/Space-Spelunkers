@@ -1,0 +1,19 @@
+.form-div {
+    width: 400px;
+    height: 300px;
+}
+
+form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#start-button {
+    width: 100px;
+    height: 50px;
+    margin: 0 auto;
+}

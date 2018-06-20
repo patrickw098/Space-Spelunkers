@@ -9,18 +9,45 @@ document.addEventListener('DOMContentLoaded', () => {
   canvasEl.height = Game.DIM_Y;
 
   const ctx = canvasEl.getContext("2d");
-  const game = new Game(ctx);
-  window.game = game;
   // new GameView(game, ctx).start();
 
   
-  let startButton = document.getElementById("start-button");
+  let startButton = document.getElementById("form");
+  let game = new Game(ctx);
 
-  startButton.addEventListener("click", (event) =>
-    { event.preventDefault();
+  startButton.addEventListener("submit", (event) =>
+    { 
+      event.preventDefault();
+      let options = buildOptions(event)
+      debugger
+      game.end();
+      ctx.clearRect(0,0,700,700)
+      let newGame = new Game(ctx, options);
+      game = newGame;
       game.start();
       drawMap(game.map.grid);
+      // let startButton = document.getElementById("start-button");
+      // startButton.classList.add("hidden");
+      window.game = game;
     })
- 
 
 })
+
+const buildOptions = (event) => {
+  let array = event.target.elements
+  let options = {}
+
+  for (let i = 0; i < array.length - 1; i++) {
+    const element = array[i];
+    for (let j = 0; j < element.length; j++) {
+      const isSelected = element[j];
+
+      if ( isSelected.selected ) {
+        options[element.id] = isSelected.value
+      }
+    }
+  }
+
+  options.minCount = 0;
+  return options;
+}

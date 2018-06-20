@@ -6,15 +6,16 @@ import Weapon from './weapons.js';
 import FlameThrower from './flame_thrower.js';
 
 class Game {
-  constructor(ctx) {
+  constructor(ctx, options = {} ) {
     this.player = [];
     this.enemies = [];
     this.treasures = [];
-    this.map = new Map;
+    this.map = new Map(options);
     this.tiles = [];
     this.ctx = ctx;
     this.viewport = [1,0];
     this.weapons = [];
+    this.enemiesNum = options.enemies;
 
     this.addPlayer();
     this.addEnemies();
@@ -24,7 +25,11 @@ class Game {
     const that = this;
     this.bindKeyHandlers();
 
-    window.setInterval(that.animate.bind(this), 75);
+    this.interval = window.setInterval(that.animate.bind(this), 75);
+  }
+
+  end() {
+    window.clearInterval(this.interval);
   }
 
   animate() {
@@ -94,7 +99,7 @@ class Game {
   }
 
   addEnemies() {
-    for (let i = 0; i < Game.NUM_ENEMIES; i++) {
+    for (let i = 0; i < this.enemiesNum; i++) {
       this.add(new Enemy({ game: this, pos: this.map.randomPos(), map: this.map }))
     }
   }

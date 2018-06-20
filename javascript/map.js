@@ -1,8 +1,8 @@
 import { generateMap, outOfBounds } from './caverns.js'
 
 class Map {
-  constructor() {
-    [ this.grid, this.startPos ] = generateMap();
+  constructor(options) {
+    [ this.grid, this.startPos ] = generateMap(options);
   }
 
   validMove(x, y) {

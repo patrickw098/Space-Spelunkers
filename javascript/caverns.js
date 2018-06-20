@@ -139,9 +139,10 @@ const count = map => {
 
 
 export const generateMap = (options = {}) => {
-  options.chance = options.chance || 0.38
-  options.birthLimit = options.birthLimit || 4
+  options.chance = options.chance || 0.6
+  options.birthLimit = options.birthLimit || 6
   options.deathLimit = options.deathLimit || 3
+  options.minCount = options.minCount || 0
 
   let map = doStepNumTimes(10, options);
   let maxCounter = 0;
@@ -159,11 +160,14 @@ export const generateMap = (options = {}) => {
     }
   }
 
-  return maxCounter > 1100 ? [map, startSpace] : generateMap()
+  return maxCounter > options.minCount ? [map, startSpace] : generateMap()
 }
 
 export const drawMap = (map) => {
   const rootEl = document.getElementById("canvas-div");
+  while (rootEl.firstChild) {
+    rootEl.removeChild(rootEl.firstChild);
+  }
   const grid = document.createDocumentFragment();
 
   for ( let i = 0; i < map.length; i++ ) {

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/cavern.css">
+    <link rel="stylesheet" href="./css/form.css">
     <img src="./sprites/floor.png" id="floor">
     <img src="./sprites/stalfos.png" id="monster">
     <img src="./sprites/wall.png" id="wall">
@@ -26,9 +27,51 @@
       <div class="game-view">
         <canvas id="canvas">
         </canvas>
-        <div id="canvas-div"></div>
+        <div class="map-form-container"> 
+          <div id="canvas-div"></div>
+          <div class="form-div"> 
+            <form id="form"> 
+              <h2>Settings</h2>
+              <label for="distribution">Survival Chance
+                <select name="options[chance]" id="chance">
+                  <option value="0.3">0.3</option>
+                  <option value="0.4" selected=selected>0.4</option>
+                  <option value="0.5">0.5</option>
+                  <option value="0.6">0.6</option>
+                </select>
+              </label>
+              <label for="birth-rate">Birth Rate
+                <select name="options[birthLimit]" id="birthLimit">
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                </select>
+              </label>
+              <label for="death-rate">Death Rate
+                <select name="options[deathLimit]" id="deathLimit">
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                </select>
+              </label>
+              <label for="enemies">Enemies
+                <select name="options[enemies]" id="enemies">
+                  <option value="75">75</option>
+                  <option value="100">100</option>
+                  <option value="150">150</option>
+                  <option value="200">200</option>
+                  <option value="300">300</option>
+                </select>
+              </label>
+
+              <input type="submit" value="Custom Start!"/>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <button id="start-button">Start!</button>
   </body>
 </html>
