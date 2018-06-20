@@ -13,7 +13,8 @@ class Enemy extends Character {
 
     super(options);
 
-    window.setInterval( this.getMove.bind(this), 400 )
+    let interval = window.setInterval( this.getMove.bind(this), 400 )
+    window.intervals.push(interval);
   }
 
   collidedWith(otherObject) {

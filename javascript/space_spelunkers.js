@@ -14,10 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let startButton = document.getElementById("form");
   let game = new Game(ctx);
+  window.intervals = [];
 
   startButton.addEventListener("submit", (event) =>
     { 
       event.preventDefault();
+      window.intervals.forEach ((interval) => {
+        window.clearInterval(interval);
+      })
+      window.intervals = []
       let options = buildOptions(event);
       ctx.clearRect(0,0,700,700);
       let newGame = new Game(ctx, options);

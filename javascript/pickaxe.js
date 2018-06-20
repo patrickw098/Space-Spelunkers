@@ -18,9 +18,17 @@ class Pickaxe extends Weapon {
         ctx.drawImage(img, (this.pos[0] - this.game.player[0].pos[0]) * 100 + 312, (this.pos[1] - this.game.player[0].pos[1]) * 100 + 312, 75, 75);
     }
 
-    destroyRock(pos) {
-        if (!this.game.map.grid[pos[0]][pos[1]]) {
-            this.game.map.grid[pos[0]][pos[1]] = true;
+    destroyRock() {
+        let map = this.game.map;
+        let [ x, y ] = this.pos;
+
+        if (!map.grid[x][y] && !map.isOutofBounds(x,y)) {
+            let tile = document.getElementsByClassName(`square-${x}-${y}`)[0];
+
+            tile.classList.remove("wall");
+            tile.classList.add("empty");
+
+            map.grid[x][y] = true;
         }
     }
 

@@ -105,7 +105,7 @@ const countAliveNeighbors = (map, x, y) => {
 }
 
 export const outOfBounds = (map, adjX, adjY) => {
-  return adjX < 0 || adjX >= map.length || adjY < 0 || adjY >= map[0].length
+  return adjX < 0 || adjX >= map[0].length || adjY < 0 || adjY >= map.length
 }
 
 const countFill = (x,y,map,color) => {
@@ -176,7 +176,7 @@ export const drawMap = (map) => {
 
     for ( let j = 0; j < map[i].length; j++ ) {
       let col = document.createElement('div');
-      col.classList.add(`col`);
+      col.classList.add(`square-${i}-${j}`);
 
       if ( map[i][j] ) {
         col.classList.add('empty');

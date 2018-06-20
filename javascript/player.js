@@ -40,6 +40,11 @@ class Player extends Character {
 
     if ( this.map.grid[x + newX][y + newY] ) {
       this.pos = [x + newX, y + newY];
+      let tile = document.getElementsByClassName(`square-${x}-${y}`)[0];
+      tile.classList.remove("player");
+      let newTile = document.getElementsByClassName(`square-${x+newX}-${y+newY}`)[0];
+      newTile.classList.add("player");
+      
       return [x + newX, y + newY];
     }
   }

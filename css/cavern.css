@@ -12,6 +12,10 @@ body {
   font-size: 20px;
 }
 
+.player {
+  background-color: lightgreen !important;
+}
+
 header {
   text-align: center;
 }

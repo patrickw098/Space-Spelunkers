@@ -31,13 +31,10 @@ class Game {
     const that = this;
     this.bindKeyHandlers();
 
-    // this.interval = window.setInterval(that.animate.bind(this), 75);
-
     this.animate();
   }
 
   end() {
-    // window.clearInterval(this.interval);
   }
 
   animate() {
@@ -114,7 +111,7 @@ class Game {
       map: this.map
     })
 
-    this.add(player)
+    this.add(player);
 
     return player;
   }
@@ -242,6 +239,11 @@ class Game {
       if (this.points.points < 0) {
         this.points.points = 0;
       }
+
+      let tile = document.getElementsByClassName(`player`)[0];
+      tile.classList.remove("player");
+      
+
       this.player.splice(this.player.indexOf(object), 1);
       this.addPlayer()
     } else if ( object instanceof Pickaxe ) {
