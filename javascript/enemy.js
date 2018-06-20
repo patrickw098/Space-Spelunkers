@@ -12,6 +12,8 @@ class Enemy extends Character {
     options.color = DEFAULTS.COLOR;
 
     super(options);
+
+    window.setInterval( this.getMove.bind(this), 500 )
   }
 
   collidedWith(otherObject) {

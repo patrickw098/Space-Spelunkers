@@ -1,7 +1,7 @@
 
 
-const createMap = (width, height) => {
-  const chanceToStartAlive = 0.38;
+const createMap = (width, height, options) => {
+  const chanceToStartAlive = options.chance;
   const map = [];
 
     for( let x = 0; x < width; x++ ){
@@ -21,9 +21,9 @@ const createMap = (width, height) => {
 }
 
 
-const doSimulationStep = (oldMap) => {
-  const birthLimit = 4;
-  const deathLimit = 3;
+const doSimulationStep = (oldMap, options) => {
+  const birthLimit = options.birthLimit;
+  const deathLimit = options.deathLimit;
   const newMap = [];
 
   for (let x = 0; x < oldMap.length; x++ ) {
@@ -34,7 +34,7 @@ const doSimulationStep = (oldMap) => {
       let row = newMap[x];
 
       // If oldMap[x][y] is true, it means the cell is alive and we want to check
-      // whether or not we shoudl keep it alive depending on the number of
+      // whether or not we should keep it alive depending on the number of
       // alive neighbors it has.
       if ( oldMap[x][y] ) {
         if ( neighbors < deathLimit ) {
@@ -56,11 +56,11 @@ const doSimulationStep = (oldMap) => {
   return newMap;
 }
 
-const doStepNumTimes = (num) => {
-  let map = createMap(50,50);
+const doStepNumTimes = (num, options) => {
+  let map = createMap(50,50, options);
 
   for ( let i = 0; i < num; i++ ) {
-    map = doSimulationStep(map);
+    map = doSimulationStep(map, options);
   }
 
   return map;
@@ -138,8 +138,12 @@ const count = map => {
 }
 
 
-export const generateMap = () => {
-  let map = doStepNumTimes(10);
+export const generateMap = (options = {}) => {
+  options.chance = options.chance || 0.38
+  options.birthLimit = options.birthLimit || 4
+  options.deathLimit = options.deathLimit || 3
+
+  let map = doStepNumTimes(10, options);
   let maxCounter = 0;
   let startSpace = [];
 
@@ -155,7 +159,7 @@ export const generateMap = () => {
     }
   }
 
-  return maxCounter > 1100 && maxCounter < 1700 ? [map, startSpace] : generateMap()
+  return maxCounter > 1100 ? [map, startSpace] : generateMap()
 }
 
 export const drawMap = (map) => {

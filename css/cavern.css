@@ -41,6 +41,8 @@ img {
 
 #canvas {
   border: 20px solid black;
+  height: 700px;
+  width: 700px;
 }
 
 #canvas-div {
@@ -50,10 +52,6 @@ img {
   flex-direction: row;
   border: 8px solid black;
 }
-
-/* #canvas {
-  position: relative;
-} */
 
 .empty {
   background-color: white;

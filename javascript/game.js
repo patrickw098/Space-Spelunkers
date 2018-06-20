@@ -24,19 +24,12 @@ class Game {
     const that = this;
     this.bindKeyHandlers();
 
-    window.setInterval(that.animate.bind(this), 300);
+    window.setInterval(that.animate.bind(this), 75);
   }
 
-  animate(enemies) {
-    let move = Object.values(Game.MOVES);
-    let index = Math.floor(Math.random() * move.length);
-
-    // enemies.forEach((enemy) => {
-    //   enemy.move(move[index])
-    // })
-
-    this.checkCollisions();
+  animate() {
     this.draw(this.ctx);
+    this.checkCollisions();
   }
 
   add(object) {
@@ -138,7 +131,6 @@ class Game {
 
         if ( obj1.isCollidedWith(obj2) ) {
           const collision = obj1.collidedWith(obj2);
-          console.log("collision");
         }
       }
     }
@@ -216,7 +208,6 @@ class Game {
     } else if ( object instanceof FlameThrower ) {
       this.weapons.splice(this.weapons.indexOf(object), 1);
     } else if ( object instanceof Player ) {
-      window.confirm("Ouch! Try Again!");
       this.player.splice(this.player.indexOf(object), 1);
       this.addPlayer()
     }

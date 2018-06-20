@@ -13,6 +13,7 @@
     <img src="./sprites/link_back.png" id="link-back">
     <img src="./sprites/flame.gif" id="flame">
     <img src="./sprites/multi-link.png" id="multi-link">
+    <script type="text/javascript" src="./bundle.js"></script>
 
 
     </script>
@@ -20,13 +21,14 @@
   </head>
   <body>
     <header><h1>Space Spelunkers</h1></header>
+    <div> Space Spelunkers is a game of creation and exploration.  Using cellular automata, Space Spelunkers will randomly generate a cavern based on your selected settings.  You can then navigate the cavern, collect treasures, and defeat your enemies!</div>
     <div class="main-body">
       <div class="game-view">
         <canvas id="canvas">
         </canvas>
         <div id="canvas-div"></div>
-        <script type="text/javascript" src="./bundle.js"></script>
       </div>
     </div>
+    <button id="start-button">Start!</button>
   </body>
 </html>

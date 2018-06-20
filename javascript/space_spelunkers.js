@@ -13,8 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
   window.game = game;
   // new GameView(game, ctx).start();
 
-  game.start();
+  
+  let startButton = document.getElementById("start-button");
 
-  drawMap(game.map.grid);
+  startButton.addEventListener("click", (event) =>
+    { event.preventDefault();
+      game.start();
+      drawMap(game.map.grid);
+    })
+ 
 
 })
