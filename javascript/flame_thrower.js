@@ -1,12 +1,7 @@
 import Weapon from './weapons.js';
 
-const DEFAULTS = {
-  SPREAD: [[1,1],[1,0],[1,-1]]
-}
-
 class FlameThrower extends Weapon {
   constructor(options) {
-    options.spread = DEFAULTS.SPREAD;
 
     super(options);
 

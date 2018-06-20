@@ -1,20 +1,91 @@
+h1 {
+    font-size: 75px;
+    font-family: 'Monoton', cursive;
+    color: yellow;
+}
+
 .form-div {
     width: 400px;
     height: 300px;
 }
 
 form {
-    height: 100%;
-    width: 100%;
+    height: 316px;
+    width: 416px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    background-color: rgba(127, 182, 148, 0.6);
+    border: 8px solid black;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+form i {
+    margin-right: 10px;
 }
 
 #start-button {
     width: 100px;
-    height: 100px;
+    height: 50px;
     margin: 0 auto;
-    background-color: green;
+    background-color: rgb(113, 162, 218);
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Poor Story', cursive;
+    cursor: pointer;
+}
+
+#start-button:hover {
+    background-color: rgb(37, 101, 175);
+}
+
+.explanation {
+    position: absolute;
+    height: 700px;
+    width: 700px;
+    padding: 30px;
+    top: 0px;
+    left: 10px;
+    font-size: 50px;
+    z-index: -1;
+    box-sizing: border-box;
+    text-shadow: 5px 5px black;
+}
+
+.map-form-container {
+    position: relative;
+}
+
+.control {
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    box-sizing: border-box;
+    top: 0px;
+    left: 0px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 50px;
+    text-align: center;
+    align-items: center;
+    text-shadow: 5px 5px black;
+    z-index: -1;
+}
+
+.wasd {
+    height: 100px;
+    width: 200px;
+}
+
+.canvas-container {
+    position: relative;
+}
+
+.form-div h2 {
+    font-size: 30px;
 }

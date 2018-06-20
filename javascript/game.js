@@ -1,9 +1,11 @@
 import Player from './player.js';
 import Enemy from './enemy.js';
 import Map from './map.js';
-import { generateMap, turmitesNTimes, drawMap } from './caverns.js';
 import Rock from './rock.js';
 import FlameThrower from './flame_thrower.js';
+import Pickaxe from './pickaxe.js';
+import Text from './text.js';
+import Treasure from './treasure.js';
 
 class Game {
   constructor(ctx, options = {} ) {
@@ -16,7 +18,10 @@ class Game {
     this.viewport = [1,0];
     this.weapons = [];
     this.rocks = [];
+    this.pickaxe = [];
+    this.treasures = [];
     this.enemiesNum = options.enemies;
+    this.points = new Text({ points: 0 })
 
     this.addPlayer();
     this.addEnemies();
@@ -51,6 +56,10 @@ class Game {
       this.weapons = this.weapons.concat(object);
     } else if ( object instanceof Rock ) {
       this.rocks.push(object);
+    } else if ( object instanceof Pickaxe ) {
+      this.pickaxe.push(object);
+    } else if ( object instanceof Treasure ) {
+      this.treasures.push(object);
     }
   }
 
@@ -65,6 +74,11 @@ class Game {
         player[0].move(move);
       } else if ( event.key === "f" ) {
         this.add(that.calculateFlamethrower())
+      } else if ( event.key === "t" ) {
+        this.add(new Pickaxe( { pos: [this.player[0].pos[0] + this.viewport[0], this.player[0].pos[1] + this.viewport[1]],
+                                player: this.player,
+                                game: this
+                               }))
       }
     })
   }
@@ -113,6 +127,10 @@ class Game {
     for (let i = 0; i < 200; i++) {
       this.add(new Rock({ game: this, pos: this.map.randomPos(), map: this.map }))
     }
+
+    for (let i = 0; i < 20; i++) {
+      this.add(new Treasure({ game: this, pos: this.map.randomPos(), map: this.map }))
+    }
   }
 
   draw() {
@@ -121,19 +139,21 @@ class Game {
     this.ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
     this.tiles = this.getTiles();
-
+    
     this.tiles.forEach((tile) => {
       let [x,y] = tile;
       this.drawTile(x, y);
     })
-
+    
     this.allObjects().forEach((object) => {
       object.draw(this.ctx);
     });
+    
+    this.points.draw(this.ctx);
   }
 
   allObjects() {
-    return [].concat(this.rocks, this.player, this.weapons, this.enemies)
+    return [].concat(this.rocks, this.treasures, this.player, this.weapons, this.enemies, this.pickaxe)
   }
 
   checkCollisions() {
@@ -156,26 +176,19 @@ class Game {
     let [ playerX, playerY ] = this.player[0].pos;
     let wall = document.getElementById("wall");
     let floor = document.getElementById("floor");
+    let obsidian = document.getElementById("obsidian");
 
     if ( this.map.isOutofBounds(x,y) ) {
       // this.ctx.beginPath();
       // this.ctx.fillStyle = "black";
       // this.ctx.fillRect((x - playerX) * 100 + 300, (y - playerY) * 100 + 300, 100, 100);
       // this.ctx.fill();
-      this.ctx.drawImage(wall, (x - playerX) * 100 + 300, (y - playerY) * 100 + 300, 100, 100);
+      this.ctx.drawImage(obsidian, (x - playerX) * 100 + 300, (y - playerY) * 100 + 300, 100, 100);
     } else if ( this.map.grid[x][y] && this.inViewPort(x,y)) {
       this.ctx.drawImage(floor, (x - playerX) * 100 + 300, (y - playerY) * 100 + 300, 100, 100);
     } else if ( this.map.grid[x][y] ) {
       this.ctx.drawImage(floor, (x - playerX) * 100 + 300, (y - playerY) * 100 + 300, 100, 100);
-      // this.ctx.beginPath();
-      // this.ctx.fillStyle = "gray";
-      // this.ctx.fillRect((x - playerX) * 100 + 300, (y - playerY) * 100 + 300, 100, 100);
-      // this.ctx.fill();
     } else {
-      // this.ctx.beginPath();
-      // this.ctx.fillStyle = "black";
-      // this.ctx.fillRect((x - playerX) * 100 + 300, (y - playerY) * 100 + 300, 100, 100);
-      // this.ctx.fill();
       this.ctx.drawImage(wall, (x - playerX) * 100 + 300, (y - playerY) * 100 + 300, 100, 100);
     }
 
@@ -220,12 +233,22 @@ class Game {
 
   remove(object) {
     if (object instanceof Enemy) {
+      this.points.points += 100;
       this.enemies.splice(this.enemies.indexOf(object), 1);
     } else if ( object instanceof FlameThrower ) {
       this.weapons.splice(this.weapons.indexOf(object), 1);
     } else if ( object instanceof Player ) {
+      this.points.points -= 100;
+      if (this.points.points < 0) {
+        this.points.points = 0;
+      }
       this.player.splice(this.player.indexOf(object), 1);
       this.addPlayer()
+    } else if ( object instanceof Pickaxe ) {
+      this.pickaxe.splice(this.pickaxe.indexOf(object), 1);
+    } else if ( object instanceof Treasure ) {
+      this.points.points += 500;
+      this.treasures.splice(this.treasures.indexOf(object), 1); 
     }
   }
 

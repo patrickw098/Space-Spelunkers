@@ -18,10 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   startButton.addEventListener("submit", (event) =>
     { 
       event.preventDefault();
-      let options = buildOptions(event)
-      debugger
-      game.end();
-      ctx.clearRect(0,0,700,700)
+      let options = buildOptions(event);
+      ctx.clearRect(0,0,700,700);
       let newGame = new Game(ctx, options);
       game = newGame;
       game.start();

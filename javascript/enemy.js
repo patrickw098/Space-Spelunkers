@@ -20,8 +20,9 @@ class Enemy extends Character {
     const that = this;
 
     if ( otherObject instanceof Player) {
-      that.game.remove(otherObject);
+      this.game.points.points -= 100;
       that.game.remove(that);
+      that.game.remove(otherObject);
     }
   }
 

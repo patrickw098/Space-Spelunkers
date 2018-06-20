@@ -2,12 +2,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <title>Space Spelunkers!</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/cavern.css">
     <link rel="stylesheet" href="./css/form.css">
     <img src="./sprites/dirt3.png" id="floor">
     <img src="./sprites/stalfos.png" id="monster">
-    <img src="./sprites/wall.png" id="wall">
+    <img src="./sprites/wall3.png" id="wall">
     <img src="./sprites/link_front.png" id="link-front">
     <img src="./sprites/link_right.png" id="link-right">
     <img src="./sprites/link_left.png" id="link-left">
@@ -15,21 +16,29 @@
     <img src="./sprites/flame.gif" id="flame">
     <img src="./sprites/multi-link.png" id="multi-link">
     <img src="./sprites/pebbles.png" id="rock">
+    <img src="./sprites/wall.png" id="obsidian">
+    <img src="./sprites/pickaxe.png" id="pickaxe">
+    <img src="./sprites/treasure.png" id="treasure">
     <script type="text/javascript" src="./bundle.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 
     </script>
     <title></title>
   </head>
   <body>
-    <header><h1>Space Spelunkers</h1></header>
-    <div> Space Spelunkers is a game of creation and exploration.  Using cellular automata, Space Spelunkers will randomly generate a cavern based on your selected settings.  You can then navigate the cavern, collect treasures, and defeat your enemies!</div>
+    <header><h1>Space Spelunkers!</h1></header>
     <div class="main-body">
       <div class="game-view">
-        <canvas id="canvas">
-        </canvas>
+        <div class="canvas-container">
+          <canvas id="canvas">
+          </canvas>
+          <div class="explanation"> Space Spelunkers is a game of creation and exploration.  Using cellular automata, Space Spelunkers will randomly generate a cavern based on your selected settings.  You can then navigate the cavern, collect treasures, and defeat your enemies!</div>
+        </div>
         <div class="map-form-container"> 
           <div id="canvas-div"></div>
+          <div class="control">Movement: <img class="wasd" src="./sprites/wasd.png" alt=""> F: <div>Flamethrower </div></div>
           <div class="form-div"> 
             <form id="form"> 
               <h2>Settings</h2>

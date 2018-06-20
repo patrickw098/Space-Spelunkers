@@ -7,6 +7,7 @@ class Character {
     this.radius = options.radius;
     this.color = options.color;
     this.map = options.map;
+    this.items = [];
   }
 
   isCollidedWith(otherObject) {
