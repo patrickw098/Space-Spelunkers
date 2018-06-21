@@ -35,6 +35,48 @@ document.addEventListener('DOMContentLoaded', () => {
       window.game = game;
   })
 
+  let survivalChance = document.getElementById("survival-chance");
+  let deathRate = document.getElementById("death-rate");
+  let birthRate = document.getElementById("birth-rate");
+  let survivalChanceDiv = document.getElementsByClassName("survival-chance-info")[0];
+  let deathRateDiv = document.getElementsByClassName("death-rate-info")[0];
+  let birthRateDiv = document.getElementsByClassName("birth-rate-info")[0];
+
+  survivalChance.addEventListener("mouseover", (event) => {
+    event.preventDefault();
+
+    survivalChanceDiv.classList.remove("hidden");
+  })
+
+  survivalChance.addEventListener("mouseout", (event) => {
+    event.preventDefault();
+
+    survivalChanceDiv.classList.add("hidden");
+  })
+  deathRate.addEventListener("mouseover", (event) => {
+    event.preventDefault();
+
+    deathRateDiv.classList.remove("hidden");
+  })
+
+  deathRate.addEventListener("mouseout", (event) => {
+    event.preventDefault();
+
+    deathRateDiv.classList.add("hidden");
+  })
+
+  birthRate.addEventListener("mouseover", (event) => {
+    event.preventDefault();
+
+    birthRateDiv.classList.remove("hidden");
+  })
+
+  birthRate.addEventListener("mouseout", (event) => {
+    event.preventDefault();
+
+    birthRateDiv.classList.add("hidden");
+  })
+
 })
 
 const buildOptions = (event) => {

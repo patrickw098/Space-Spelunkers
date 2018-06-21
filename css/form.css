@@ -94,3 +94,34 @@ header i {
     cursor: pointer;
     color: white;
 }
+
+.form label {
+    position: relative;
+}
+
+.survival-chance-info {
+    display: block;
+    position: absolute;
+    background-color: black;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.birth-rate-info {
+    display: block;
+    position: absolute;
+    background-color: black;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.death-rate-info {
+    display: block;
+    position: absolute;
+    background-color: black;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+}
