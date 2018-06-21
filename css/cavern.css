@@ -4,7 +4,6 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 0;
-  background-image: url("./sprites/cave4.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   color: white;

@@ -90,6 +90,7 @@ form i {
     font-size: 30px;
 }
 
-i {
+header i {
     cursor: pointer;
+    color: white;
 }
