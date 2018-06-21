@@ -31,6 +31,12 @@ class Game {
     const that = this;
     this.bindKeyHandlers();
 
+    // let players = document.getElementsByClassName("player");
+    // for (let i = 0; i < players.length; i ++) {
+    //   let player = players[i];
+
+    //   player.classList.remove("player");
+    // }
     this.animate();
   }
 
