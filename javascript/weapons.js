@@ -1,5 +1,6 @@
 import Enemy from './enemy.js';
 import Player from './player.js';
+import Boss from './boss.js';
 
 class Weapon {
   constructor(options) {
@@ -24,7 +25,7 @@ class Weapon {
       this.game.remove(this);
     } else if ( otherObject instanceof Player ) {
       this.game.remove(otherObject);
-    }
+    } 
   }
 }
 

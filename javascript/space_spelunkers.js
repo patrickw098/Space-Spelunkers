@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   let startButton = document.getElementById("form");
-  let game = new Game(ctx);
   window.intervals = [];
+  let game = new Game(ctx);
 
   startButton.addEventListener("submit", (event) =>
     { 
@@ -25,15 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
       window.intervals = []
       let options = buildOptions(event);
       ctx.clearRect(0,0,700,700);
+      game.end();
       let newGame = new Game(ctx, options);
       game = newGame;
       game.start();
       drawMap(game.map.grid);
       let startButton = document.getElementById("start-button");
       startButton.blur();
-      // startButton.classList.add("hidden");
       window.game = game;
-    })
+  })
 
 })
 

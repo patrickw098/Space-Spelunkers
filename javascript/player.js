@@ -22,6 +22,14 @@ class Player extends Character {
     // ctx.fillStyle = this.color;
     // ctx.fillRect(312, 312, 75, 75);
     // ctx.fill();
+
+    let [x,y] = this.pos;
+
+    let tile = document.getElementsByClassName(`player`)[0];
+    if ( tile !== undefined ) tile.classList.remove("player");
+    let newTile = document.getElementsByClassName(`square-${x}-${y}`)[0];
+    if ( newTile !== undefined ) newTile.classList.add("player");
+
     if ( this.game.viewport.toString() === "0,1" ) {
       ctx.drawImage(linkFront, 312, 312, 75, 75);
     } else if ( this.game.viewport.toString() === "1,0" ) {
@@ -40,10 +48,10 @@ class Player extends Character {
 
     if ( this.map.grid[x + newX][y + newY] ) {
       this.pos = [x + newX, y + newY];
-      let tile = document.getElementsByClassName(`square-${x}-${y}`)[0];
-      tile.classList.remove("player");
-      let newTile = document.getElementsByClassName(`square-${x+newX}-${y+newY}`)[0];
-      newTile.classList.add("player");
+      // let tile = document.getElementsByClassName(`player`)[0];
+      // tile.classList.remove("player");
+      // let newTile = document.getElementsByClassName(`square-${x+newX}-${y+newY}`)[0];
+      // newTile.classList.add("player");
       
       return [x + newX, y + newY];
     }

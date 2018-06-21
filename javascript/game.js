@@ -6,6 +6,7 @@ import FlameThrower from './flame_thrower.js';
 import Pickaxe from './pickaxe.js';
 import Text from './text.js';
 import Treasure from './treasure.js';
+import Boss from './boss.js';
 
 class Game {
   constructor(ctx, options = {} ) {
@@ -41,6 +42,7 @@ class Game {
   }
 
   end() {
+    this.player.pop();
   }
 
   animate() {
@@ -63,6 +65,8 @@ class Game {
       this.pickaxe.push(object);
     } else if ( object instanceof Treasure ) {
       this.treasures.push(object);
+    } else if ( object instanceof Boss ) {
+      this.enemies.push(object);
     }
   }
 
@@ -127,6 +131,8 @@ class Game {
       this.add(new Enemy({ game: this, pos: this.map.randomPos(), map: this.map }))
     }
 
+    this.add(new Boss({ game: this, pos: this.map.randomPos(), map: this.map }))
+
     for (let i = 0; i < 200; i++) {
       this.add(new Rock({ game: this, pos: this.map.randomPos(), map: this.map }))
     }
@@ -147,6 +153,10 @@ class Game {
       let [x,y] = tile;
       this.drawTile(x, y);
     })
+
+    this.rocks.forEach ((rock) => {
+      rock.draw(this.ctx);
+    })
     
     this.allObjects().forEach((object) => {
       object.draw(this.ctx);
@@ -156,7 +166,7 @@ class Game {
   }
 
   allObjects() {
-    return [].concat(this.rocks, this.treasures, this.player, this.weapons, this.enemies, this.pickaxe)
+    return [].concat(this.treasures, this.player, this.weapons, this.enemies, this.pickaxe)
   }
 
   checkCollisions() {
@@ -257,6 +267,13 @@ class Game {
     } else if ( object instanceof Treasure ) {
       this.points.points += 500;
       this.treasures.splice(this.treasures.indexOf(object), 1); 
+    } else if ( object instanceof Boss ) {
+      if ( object.lives !== 0 ) {
+        object.lives -= 1;
+      } else {
+        this.points.points += 3000;
+        this.enemies.splice(this.enemies.indexOf(object), 1);
+      }
     }
   }
 
