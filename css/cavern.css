@@ -9,7 +9,7 @@ body {
   color: white;
   font-family: 'Poor Story', cursive;
   font-size: 20px;
-  background-image: url(https://i.imgur.com/jyVC11f.jpg);
+  background-image: url("https://i.imgur.com/jyVC11f.jpg");
 }
 
 .player {
