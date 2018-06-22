@@ -9,7 +9,7 @@ import Treasure from './treasure.js';
 import Boss from './boss.js';
 
 class Game {
-  constructor(ctx, options = {} ) {
+  constructor(ctx, audio, options = {} ) {
     this.player = [];
     this.enemies = [];
     this.treasures = [];
@@ -23,6 +23,10 @@ class Game {
     this.treasures = [];
     this.enemiesNum = options.enemies;
     this.points = new Text({ points: 0 })
+
+    this.audio = audio;
+    this.audio.play();
+
 
     this.addPlayer();
     this.addEnemies();

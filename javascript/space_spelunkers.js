@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let startButton = document.getElementById("form");
   window.intervals = [];
-  let game = new Game(ctx);
+  let game;
+  window.muted = false;
+  let audio = new Audio();
+  audio.src = "./sound/overworld.mp3";
+  audio.loop = true;
 
   startButton.addEventListener("submit", (event) =>
     { 
@@ -22,17 +26,29 @@ document.addEventListener('DOMContentLoaded', () => {
       window.intervals.forEach ((interval) => {
         window.clearInterval(interval);
       })
+
       window.intervals = []
       let options = buildOptions(event);
       ctx.clearRect(0,0,700,700);
-      game.end();
-      let newGame = new Game(ctx, options);
+      if ( game !== undefined ) game.end();
+      let newGame = new Game(ctx, audio, options);
       game = newGame;
       game.start();
       drawMap(game.map.grid);
       let startButton = document.getElementById("start-button");
       startButton.blur();
       window.game = game;
+  })
+
+  let volumeUp = document.getElementById("mute-button");
+  volumeUp.addEventListener("click", () => {
+    if ( volumeUp.className === "fas fa-volume-off" ) {
+      audio.play();
+      volumeUp.className = "fas fa-volume-up";
+    } else {
+      audio.pause();
+      volumeUp.className = "fas fa-volume-off";
+    }
   })
 
   let survivalChance = document.getElementById("survival-chance");
