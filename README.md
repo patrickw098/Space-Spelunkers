@@ -1,5 +1,7 @@
 ### SpaceSpelunkers!
 
+[Try Live!](https://patrickw098.github.io/Space-Spelunkers/)
+
 ## Background and Overview
 SpaceSpelunkers is a cavern exploration game that utilizes cellular automata to procedurally generate random caverns full of treasures and bad guys for the user to explore.  Armed with a pickaxe and a flame thrower, it is up to the player to explore the cave and uncover its secrets!
 Overview:
