@@ -132,3 +132,7 @@ header i {
     justify-content: space-between;
     width: 1100px;
 }
+
+footer {
+    text-align: center;
+}

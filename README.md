@@ -97,3 +97,5 @@ To create the viewport a canvas is created and once the game is initialized, all
 ```
 
 All other objects within the players viewport are also drawn by `this.allObjects`, `forEach`, `object.draw`.  Each objects `draw` function takes into consideration the players current viewport, and only draws itself if it is within the viewport.  It's coordinates are then normalized relative to the players position.
+
+I do not own any of the characters, sprites, or music.  They are all owned by their respective owners.
