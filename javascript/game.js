@@ -272,9 +272,10 @@ class Game {
       }
 
       let tile = document.getElementsByClassName(`player`)[0];
-      tile.classList.remove("player");
+      if ( tile !== undefined ) {
+        tile.classList.remove("player");
+      }
       
-
       this.player.splice(this.player.indexOf(object), 1);
       this.addPlayer()
     } else if ( object instanceof Pickaxe ) {
