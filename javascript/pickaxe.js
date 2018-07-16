@@ -22,7 +22,7 @@ class Pickaxe extends Weapon {
         let map = this.game.map;
         let [ x, y ] = this.pos;
 
-        if (!map.grid[x][y] && !map.isOutofBounds(x,y)) {
+        if (map.grid[x] && !map.grid[x][y] && !map.isOutofBounds(x,y)) {
             let tile = document.getElementsByClassName(`square-${x}-${y}`)[0];
 
             tile.classList.remove("wall");

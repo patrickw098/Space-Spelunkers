@@ -79,10 +79,14 @@ class Game {
     const that = this;
 
     window.addEventListener("keydown", (event) => {
-      if ( Object.keys(Game.MOVES).indexOf(event.key) !== -1 ) {
+      if ( player[0] === undefined ) {
+        return;
+      } else if ( Object.keys(Game.MOVES).indexOf(event.key) !== -1 ) {
         let move = Game.MOVES[event.key]
         this.viewport = move;
-        player[0].move(move);
+        if ( player[0] !== undefined ) {
+          player[0].move(move);
+        }
       } else if ( event.key === "f" ) {
         this.add(that.calculateFlamethrower())
       } else if ( event.key === "t" ) {
@@ -190,7 +194,11 @@ class Game {
   }
 
   drawTile(x,y) {
-    let [ playerX, playerY ] = this.player[0].pos;
+    let playerX, playerY
+    if ( this.player[0] == undefined ) {
+      return;
+    }
+    [playerX, playerY] = this.player[0].pos;
     let wall = document.getElementById("wall");
     let floor = document.getElementById("floor");
     let obsidian = document.getElementById("obsidian");
@@ -230,7 +238,10 @@ class Game {
   }
 
   getTiles() {
-    let [x,y] = this.player[0].pos;
+    let x,y
+    if ( this.player[0] !== undefined ) {
+      [x,y] = this.player[0].pos;
+    }
     let tilesArray = [];
 
     for ( let i = -3 ; i <= 3; i++ ) {

@@ -46,7 +46,7 @@ class Player extends Character {
     let [x,y] = this.pos;
     let [newX, newY] = move;
 
-    if ( this.map.grid[x + newX][y + newY] ) {
+    if ( this.map.grid[x + newX] && this.map.grid[x + newX][y + newY] ) {
       this.pos = [x + newX, y + newY];
       // let tile = document.getElementsByClassName(`player`)[0];
       // tile.classList.remove("player");

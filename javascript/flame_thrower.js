@@ -11,7 +11,7 @@ class FlameThrower extends Weapon {
   draw(ctx) {
     let img = document.getElementById("flame");
 
-    if ( this.game.map.grid[this.pos[0]][this.pos[1]] ) {
+    if ( this.game.map.grid[this.pos[0]] && this.game.map.grid[this.pos[0]][this.pos[1]] ) {
       ctx.drawImage(img, (this.pos[0] - this.game.player[0].pos[0]) * 100 + 300, (this.pos[1] - this.game.player[0].pos[1]) * 100 + 300, 75, 75)
     }
   }

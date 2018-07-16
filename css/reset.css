@@ -25,6 +25,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1.5;
+  min-width: 1200px;
+  min-height: 900px;
 }
 ol, ul {
   list-style: none;
