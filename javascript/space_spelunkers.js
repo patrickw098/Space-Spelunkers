@@ -40,6 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
       window.game = game;
   })
 
+  let stopButton = document.getElementById("stop-button")
+
+  stopButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    location.reload(true);
+  })
+
   let volumeUp = document.getElementById("mute-button");
   volumeUp.addEventListener("click", () => {
     if ( volumeUp.className === "fas fa-volume-off" ) {
